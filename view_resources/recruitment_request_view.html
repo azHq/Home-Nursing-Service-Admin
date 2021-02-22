@@ -1,0 +1,73 @@
+<div id="all_recruitment_layout" class="card scale_up" style="width:100%;background-color:#6302b3e1;">
+    <div style="width:100%;margin-top:55px;text-align: center;background-color:#1e04afc0;padding:10px;color: white;font-family: 'Times New Roman', Times, serif;">
+      <h2 style="font-size:22px;padding-top:8px;">All Recruitent Requests</h2>
+    </div>
+    <div style="width:100%;margin-top:1px;">
+      <table width="99.94%"  border-collapse: collapse >
+        <thead>
+          <tr>
+            <th width="20%"></th>
+            <th width="40%"></th>
+            <th width="40%"></th>
+          </tr>
+        </thead>
+        <tbody id="body">
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var db=firebase.firestore();
+    str="";
+    var index=0;
+    var query_snapshot;
+    db.collection("AllDoctors").where("account_status", "==", "pending").get().then((querySnapshot) => {
+      query_snapshot=querySnapshot;
+      querySnapshot.forEach((doc) => {
+          var data=doc.data();
+          str+="<tr id='"+index+"' class='shadow-sm' style='width:90%;background-color:white;margin:100px;'>"+
+            "<td class='cell' align='center'>"+
+              "<img height='100' style='text-align: center;'  width='100' src='../assets/images/doctor.svg'/>"+
+            "</td>"+
+            "<td class='cell'>"+
+              "<div style='margin-left:20px;'>"+
+                "<h4 style='font-family: 'Times New Roman', Times, serif;'>"+data.user_name+"</h4>"+
+                "<h5 style='font-family: 'Times New Roman', Times, serif;'>"+data.phone_number+"</h5>"+
+                "<h5 style='font-family: 'Times New Roman', Times, serif;'>"+date_converter1(data.create_at)+"</h5>"+
+              "</div>"+
+            "</td>"+
+            "<td class='cell' align='center'>"+
+              "<button onclick=approve('"+data.user_id+"') style='width:140px;height:40px;text-align:center;display:block;background-color:#380092ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;'>Approve"+
+              "</button>"+
+              "<button onclick='cancel("+index+")' style='width:140px;height:40px;text-align:center;display:block;background-color:#8f1e01ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;'>Cancel"+
+              "</button>"+
+            "</td>"+
+          "</tr>";
+          index++;
+      });
+      $("#body").children().remove();
+      $("#body").append(str);
+    });
+
+    function approve(user_id)
+    { 
+      alert(user_id);
+      if (confirm('Are you sure to approve ?')) {
+        
+        //  db.collection("AllDoctors").doc(query_snapshot.docs[user_id].data().user_id).update({
+        //    "account_status":"approved"
+        // });
+        // $("#"+user_id).remove();
+      }
+    }
+    function cancel(user_id){
+      if (confirm('Are you sure to approve ?')) {
+        db.collection("AllDoctors").doc(query_snapshot.docs[user_id].data().user_id).update({
+            "account_status":"cancel"
+          });
+        $("#"+user_id).remove();
+      }
+    }
+  
+  </script>

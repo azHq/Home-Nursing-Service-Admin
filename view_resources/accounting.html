@@ -1,0 +1,75 @@
+<div id="all_recruitment_layout" class="card scale_up" style="width:100%;background-color:white;">
+    <div style="width:100%;margin-top:55px;text-align: center;background-color:#5401a1cc;padding:10px;color: white;font-family: 'Times New Roman', Times, serif;">
+      <h2 style="font-size:22px;padding-top:8px;">Accounting</h2>
+    </div>
+    <div style="width:100%;margin-top:2px;">
+      <div class="w-100" style="background: white;">
+        <div id="chartDiv" style="width:58%; height:350px; margin:10px;float: left;"></div>
+        <div style="height:380px;width:1px;background-color:#9090909a;float: left;"></div>
+        <div id="details" style="width:40%; height:350px; margin:10px auto;float: left;">
+          <h3 class="w-100 p-2" style="text-align: center;color:#2e2e2ed2;">January</h3>
+          <div id="bar_char_for_total" style="width:95%; height:300px; margin:auto;"></div>
+        </div>
+      </div>
+      <div style="height:1px;width:100%;background-color:#9090909a;clear: both;"></div>
+      <h3 class="w-100 p-2 mt-3" style="text-align: center;color:#8a6502d2;background-color: #bdbd7f9f;font-family: 'Times New Roman', Times, serif;">All Service Summary</h3>
+      <div class="w-100" style="background: white;">
+        <div id="all_service_chart" style="width:94%; height:350px; margin:3%;"></div>
+      </div>
+    </div>
+    
+  </div>
+  <script type="text/javascript">
+  $(document).ready(function(){
+
+    $('#all_recruitment_layout').one("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function(){
+  
+      function init_data(){
+        let income = [],  served_request= [];
+        for(var i=1;i<31;i++){
+          income.push({x: i, y: Math.floor((Math.random() * 100) + 1)});
+          served_request.push({x: i, y: Math.floor((Math.random() * 300) + 1)});
+        }
+        let data=[
+          {name: 'Income', points: income},
+          {name: 'Request Served', points: served_request}
+        ];
+        renderChart(data);
+        data=[
+          {name: 'Total Income', points: [{x:"Total Income",y:1000}]},
+          {name: 'Total Served', points: [{x:"Total Served",y:500}]},
+          {name: 'Total Not Served', points: [{x:"Total Not Served",y:50}]}
+        ];
+        renderBarChart("bar_char_for_total",data,"Vertical column");
+
+        data=[
+          {name: 'Sevice 1', points: [{x:"Sevice 1",y:1000}]},
+          {name: 'Sevice 2', points: [{x:"Sevice 2",y:500}]},
+          {name: 'Sevice 3', points: [{x:"Sevice 3",y:50}]},
+          {name: 'Sevice 4', points: [{x:"Sevice 4",y:50}]},
+          {name: 'Sevice 5', points: [{x:"Sevice 5",y:50}]},
+          {name: 'Sevice 6', points: [{x:"Sevice 6",y:50}]},
+          {name: 'Sevice 7', points: [{x:"Sevice 7",y:50}]},
+          {name: 'Sevice 8', points: [{x:"Sevice 8",y:50}]}
+        ];
+        renderBarChart("all_service_chart",data,"Vertical column");
+        
+      }
+      function renderChart(series) {
+        JSC.Chart('chartDiv', {
+          series: series
+        });
+      }
+      function renderBarChart(name,data,type){
+        JSC.Chart(name,{
+            type: type,
+            series: data
+         });
+      }
+      let data=init_data();
+
+    });
+   
+  });
+
+</script>

@@ -1,0 +1,171 @@
+<div id="all_recruitment_layout" class="card scale_up" style="width:100%;background-color:#ca6c00c0;">
+    <div style="width:100%;margin-top:55px;text-align: center;background-color:#9e4d01;padding:10px;color: white;font-family: 'Times New Roman', Times, serif;">
+      <h2 style="font-size:22px;padding-top:8px;">All Service Requests</h2>
+    </div>
+    <div  id="doctor_list" class="card" style="width:80%;height:85vh;display:none;position:fixed;background-color:white;left:10%;right:10%;top:70px;">
+        <div style="width:100%;">
+            <img onclick="hide_doctor_list()" height="25" width="25" style="float:right;margin:10px;display: block;cursor: pointer;" src="../assets/images/cancel.svg">
+        </div>
+        <div>
+            <div style="width:94%;margin:3%;box-sizing:border-box;clear: both;">
+                <div align="center"  style="display:inline;">
+                    <div id="doctor_list_view" class="row w-100" style="box-sizing: content-box;">
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div style="width:100%;margin-top:0px;">
+      <table width="99.94%">
+        <thead>
+          <tr>
+            <th width="30%"></th>
+            <th width="40%"></th>
+            <th width="30%"></th>
+          </tr>
+        </thead>
+        <tbody id="body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <script type="text/javascript">
+   var service_id="";
+    function show_doctor_list(service_id){
+        this.service_id=service_id;
+        $("#doctor_list").css("display","block");
+    }
+    function cancel(service_id){
+        confirm("Are you sure to cancel?");
+        $("#"+service_id).remove();
+       // $("#doctor_list").css("display","block");
+    }
+    function cancel(service_id){
+        confirm("Are you sure to cancel?");
+        $("#"+service_id).remove();
+       // $("#doctor_list").css("display","block");
+    }
+    function hide_doctor_list(){
+        $("#doctor_list").css("display","none");
+    }
+    function view_details(doctor_id){
+        alert("view details");
+    }
+    function contact(doctor_id){
+      alert("contact");
+    }
+    function doctor_assign(user_name,phone_number){
+        $("#doctor_list").css("display","none");
+        $("#doctor_assigned").css("display","block");
+        $("#doctor_not_assigned").css("display","none");
+        $("#doctor_name_"+service_id).html(user_name);
+        $("#doctor_phone_number_"+service_id).html(phone_number);
+    }
+    function doctor_remove(){
+        $("#doctor_assigned").css("display","none");
+        $("#doctor_not_assigned").css("display","block");
+    }
+    var service_list="";
+    db.collection("AllServices").onSnapshot(function(snapshot) {
+        snapshot.docChanges().forEach(function(change) {
+           var count=0;
+            if (change.type === "added") {
+              
+               var data=change.doc.data();
+               var image_path=data.image_path;
+               if(image_path.length==0){
+                image_path='../assets/images/doctor.svg';
+               }
+               service_list+="<tr id='"+data.service_id+"' class='shadow-sm' style='width:90%;background-color:white;margin:100px;border-top:1px solid red;'>"+
+                  "<td class='cell' align='center'>"+
+                    "<h4 style='background-color:#83e42862;border-radius:5px;text-align:center;padding:10px;color:#aa4c00c4;font-family: 'Times New Roman', Times, serif;'>Patient</h4>"+
+                    "<img height='80' height='80' style='text-align: center;' src='"+image_path+"'/>"+
+                    "<h4 style='font-family: 'Times New Roman', Times, serif;'>"+data.patient_name+"</h4>"+
+                    "<h5 style='font-family: 'Times New Roman', Times, serif;'>"+data.phone_number+"</h5>"+
+                    "<button style='width:140px;height:40px;text-align:center;display:block;background-color:#8f1e01ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;'>View Details"+
+                  "</button>"+
+                  "</td>"+
+                  "<td class='cell'>"+
+                    "<div style='margin-left:20px;color:#2b2c31;'>"+
+                      "<h5 style='font-family: 'Times New Roman', Times, serif;'> Service Type : "+data.service_type+"</h5>"+
+                      "<div>"+
+                          "<h5 style='display:inline;font-family: 'Times New Roman', Times, serif;'> Location : "+data.location+"</h5>"+
+                          "<img height='30' width='30' style='margin-bottom: 10px;margin-left:10px;' src='../assets/images/google_maps.svg'>"+
+                      "</div>"+
+                      "<h5 style='font-family: 'Times New Roman', Times, serif;'>Service Charge : "+data.charge+" TK </h5>"+
+                      "<h5 style='font-family: 'Times New Roman', Times, serif;'> Date : "+date_converter1(data.date_time)+"</h5>"+
+                    "</div>"+
+                  "</td>"+
+                  "<td class='cell' align='center'>"+
+                      "<div id='doctor_assigned' style='display: none;'>"+
+                          "<div style='background-color:#83e42862;border-radius:5px;text-align:center;padding:10px;margin-bottom:8px;display:flex;'>"+
+                            "<h4 style='color:#aa4c00c4;margin:0px;width:100%;font-family: 'Times New Roman', Times, serif;'>Doctor</h4>"+
+                            "<img onclick='doctor_remove()' height='15' width='15' src='../assets/images/cancel.svg' style='cursor: pointer;'>"+
+                          "</div>"+
+                          "<img height='80' height='80' style='text-align: center;' src='../assets/images/doctor.svg'/>"+
+                          "<h4 id='doctor_name_"+data.service_id+"' style='font-family: 'Times New Roman', Times, serif;'>"+data.doctor_name+"</h4>"+
+                          "<h5 id='doctor_phone_number_"+data.service_id+"' style='font-family: 'Times New Roman', Times, serif;'>"+data.doctor_phone_number+"</h5>"+
+                          "<button style='width:140px;height:40px;text-align:center;display:block;background-color:#8f1e01ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;'>View Details"+
+                          "</button>"+
+                      "</div>"+
+                      "<div id='doctor_not_assigned' style='display:block;'>"+
+                          "<button onclick=show_doctor_list('"+data.service_id+"') style='width:140px;height:40px;text-align:center;display:block;background-color:#380092ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;'>Assign Doctor"+
+                          "</button>"+
+                          "<button onclick=cancel('"+data.service_id+"') style='width:140px;height:40px;text-align:center;display:block;background-color:#8f1e01ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;'>Cancel"+
+                          "</button>"+
+                      "</div>"+
+                  "</td>"+
+                "</tr>";
+                $("#body").children().remove();
+                $("#body").append(service_list);
+                console.log("New city: ", change.doc.data());
+                count++;
+            }
+            if (change.type === "modified") {
+                console.log("Modified city: ", change.doc.data());
+            }
+            if (change.type === "removed") {
+                console.log("Removed city: ", change.doc.data());
+            }
+        });
+       
+        db.collection("AllDoctors").where("account_status", "==", "approved").get().then((querySnapshot) => {
+          query_snapshot=querySnapshot;
+          var doctor_list="";
+          var index=0;
+          querySnapshot.forEach((doc) => {
+              var data=doc.data();
+              var image_path=data.image_path;
+              if(image_path.length==0){
+                image_path="../assets/images/doctor.svg";
+              }
+              doctor_list+=`<div class="col-lg-4 col-md-6 col-12 p-2">`+
+                  '<div  class="shadow-sm"  style="align-items:center; box-sizing:border-box;border-radius:5px;padding:10px;">'+
+                      '<img height="80" height="80" style="text-align: center;" src="'+image_path+'"/>'+
+                      '<h4  id="user_name_'+data.user_id+' style="font-family: "Times New Roman", Times, serif;">'+data.user_name+'</h4>'+
+                      '<h5 id="phone_number_'+data.user_id+' style="font-family: "Times New Roman", Times, serif;">'+data.phone_number+'</h5>'+
+                      `<button onclick="doctor_assign('${data.user_name}','${data.phone_number}')"  style="width:140px;height:40px;text-align:center;display:block;background-color:#380092ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;">Assign Doctor`+
+                      '</button>'+
+                      "<button onclick=view_details('"+data.user_id+"')   style='width:140px;height:40px;text-align:center;display:block;background-color:#7c049bce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;'>View Details"+
+                      "</button>"+
+                      "<button onclick=contact('"+data.user_id+"') style='width:140px;height:40px;text-align:center;display:block;background-color:#8f1e01ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;'>Contact"+
+                      "</button>"+
+                  "</div>"+
+              "</div>";
+              index++;
+          });
+          if(index==0){
+            doctor_list+="<div style='width:100%;height:400px;display:flex;justify-content:center;align-items:stretch;'>"+
+                            "<h1 style='margin:auto;font-size:28px;font-style:bold;font-family:serif;'>There is no doctor</h1>"+
+                        "</div>";
+          }
+          $("#doctor_list_view").children().remove();
+          $("#doctor_list_view").append(doctor_list);
+      });
+
+    });
+</script>

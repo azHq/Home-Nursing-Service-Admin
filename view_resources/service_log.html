@@ -1,0 +1,215 @@
+<div id="all_recruitment_layout" class="card scale_up" style="width:96%;margin-left:2%;margin-right:2%;">
+    <div style="width:100%;margin-top:55px;text-align: center;background-color:#9e4d01;padding:10px;color: white;font-family: 'Times New Roman', Times, serif;">
+      <h2 style="font-size:22px;padding-top:8px;">Service Log</h2>
+    </div>
+    <div  id="doctor_list" class="card" style="width:80%;height:85vh;display:none;position:fixed;background-color:white;left:10%;right:10%;top:70px;">
+        <div style="width:100%;">
+            <img onclick="hide_doctor_list()" height="25" width="25" style="float:right;margin:10px;display: block;cursor: pointer;" src="../assets/images/cancel.svg">
+        </div>
+        <div>
+            <div style="width:94%;margin:3%;box-sizing:border-box;clear: both;">
+                <div align="center"  style="display:inline;">
+                    <div class="row w-100" style="box-sizing: content-box;">
+                        <div class="col-lg-4 col-md-6 col-12 p-2">
+                            <div align="center" class="shadow-sm"  style="align-items:center; box-sizing:border-box;border-radius:5px;padding:10px;">
+                                <img height="80" height="80" style="text-align: center;" src="../assets/images/doctor.svg"/>
+                                <h4 style="font-family: 'Times New Roman', Times, serif;">Md.Ariful Islam</h4>
+                                <h5 style="font-family: 'Times New Roman', Times, serif;">Phn: 01795528283</h5>
+                                <button onclick="doctor_assign()"  style="width:140px;height:40px;text-align:center;display:block;background-color:#380092ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;">Assign Doctor
+                                </button>
+                                <button style="width:140px;height:40px;text-align:center;display:block;background-color:#7c049bce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;">View Details
+                                </button>
+                                <button style="width:140px;height:40px;text-align:center;display:block;background-color:#8f1e01ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;">Conatct
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 col-12 p-2">
+                            <div align="center" class="shadow-sm"  style="align-items:center; box-sizing:border-box;border-radius:5px;padding:10px;">
+                                <img height="80" height="80" style="text-align: center;" src="../assets/images/doctor.svg"/>
+                                <h4 style="font-family: 'Times New Roman', Times, serif;">Md.Ariful Islam</h4>
+                                <h5 style="font-family: 'Times New Roman', Times, serif;">Phn: 01795528283</h5>
+                                <button onclick="doctor_assign()" style="width:140px;height:40px;text-align:center;display:block;background-color:#8f1e01ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;">View Details
+                                </button>
+                                <button style="width:140px;height:40px;text-align:center;display:block;background-color:#380092ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;">Assign Doctor
+                                </button>
+                                <button style="width:140px;height:40px;text-align:center;display:block;background-color:#8f1e01ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;">Conatct
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12 p-2">
+                            <div align="center" class="shadow-sm"  style="align-items:center; box-sizing:border-box;border-radius:5px;padding:10px;">
+                                <img height="80" height="80" style="text-align: center;" src="../assets/images/doctor.svg"/>
+                                <h4 style="font-family: 'Times New Roman', Times, serif;">Md.Ariful Islam</h4>
+                                <h5 style="font-family: 'Times New Roman', Times, serif;">Phn: 01795528283</h5>
+                                <button onclick="doctor_assign()" style="width:140px;height:40px;text-align:center;display:block;background-color:#8f1e01ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;">View Details
+                                </button>
+                                <button style="width:140px;height:40px;text-align:center;display:block;background-color:#380092ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;">Assign Doctor
+                                </button>
+                                <button style="width:140px;height:40px;text-align:center;display:block;background-color:#8f1e01ce;color:white;border:none;margin:8px;font-weight:bold;font-size:16px;border-radius:5px;">Conatct
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div style="width:96%;margin:2%;">
+      <table width="99.94%">
+        <thead style="background-color:#b37401;color: blue;">
+          <tr style="height:35px;color:white;">
+            <th class="cell3" style="font-weight: bolder;color:white;" >Service Id</th>
+            <th class="cell3" style="font-weight: bolder;color:white;">Service Type</th>
+            <th class="cell3" style="font-weight: bolder;color:white;">User Name</th>
+            <th class="cell3" style="font-weight: bolder;color:white;">Doctor Name</th>
+            <th class="cell3" style="font-weight: bolder;color:white;">Charge</th>
+            <th class="cell3" style="font-weight: bolder;color:white;">Location</th>
+            <th class="cell3" style="font-weight: bolder;color:white;">Time</th>
+            <th class="cell3" style="font-weight: bolder;color:white;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr style="background-color:#aa80c55d;">
+              <td class="cell3">101</td>
+              <td class="cell3">Injection</td>
+              <td class="cell3">Md.Ariful Islam</td>
+              <td class="cell3">Dr.Mizanur Rahman</td>
+              <td class="cell3">300 TK</td>
+              <td class="cell3">149/3 Arambagh,Motijheel</td>
+              <td class="cell3">12/08/2020 03:40 PM</td>
+              <td class="cell3">Served</td>
+            </tr>
+            <tr style="background-color:#6788db60;">
+            <td class="cell3">101</td>
+            <td class="cell3">Injection</td>
+            <td class="cell3">Md.Ariful Islam</td>
+            <td class="cell3">Dr.Mizanur Rahman</td>
+            <td class="cell3">300 TK</td>
+            <td class="cell3">149/3 Arambagh,Motijheel</td>
+            <td class="cell3">12/08/2020 03:40 PM</td>
+            <td class="cell3">Served</td>
+            </tr>
+            <tr style="background-color:#aa80c55d;">
+                <td class="cell3">101</td>
+                <td class="cell3">Injection</td>
+                <td class="cell3">Md.Ariful Islam</td>
+                <td class="cell3">Dr.Mizanur Rahman</td>
+                <td class="cell3">300 TK</td>
+                <td class="cell3">149/3 Arambagh,Motijheel</td>
+                <td class="cell3">12/08/2020 03:40 PM</td>
+                <td class="cell3">Served</td>
+              </tr>
+            <tr style="background-color:#6788db60;">
+                <td class="cell3">101</td>
+                <td class="cell3">Injection</td>
+                <td class="cell3">Md.Ariful Islam</td>
+                <td class="cell3">Dr.Mizanur Rahman</td>
+                <td class="cell3">300 TK</td>
+                <td class="cell3">149/3 Arambagh,Motijheel</td>
+                <td class="cell3">12/08/2020 03:40 PM</td>
+                <td class="cell3">Served</td>
+            </tr>
+            <tr style="background-color:#aa80c55d;">
+                <td class="cell3">101</td>
+                <td class="cell3">Injection</td>
+                <td class="cell3">Md.Ariful Islam</td>
+                <td class="cell3">Dr.Mizanur Rahman</td>
+                <td class="cell3">300 TK</td>
+                <td class="cell3">149/3 Arambagh,Motijheel</td>
+                <td class="cell3">12/08/2020 03:40 PM</td>
+                <td class="cell3">Served</td>
+              </tr>
+              <tr style="background-color:#6788db60;">
+              <td class="cell3">101</td>
+              <td class="cell3">Injection</td>
+              <td class="cell3">Md.Ariful Islam</td>
+              <td class="cell3">Dr.Mizanur Rahman</td>
+              <td class="cell3">300 TK</td>
+              <td class="cell3">149/3 Arambagh,Motijheel</td>
+              <td class="cell3">12/08/2020 03:40 PM</td>
+              <td class="cell3">Served</td>
+              </tr>
+              <tr style="background-color:#aa80c55d;">
+                  <td class="cell3">101</td>
+                  <td class="cell3">Injection</td>
+                  <td class="cell3">Md.Ariful Islam</td>
+                  <td class="cell3">Dr.Mizanur Rahman</td>
+                  <td class="cell3">300 TK</td>
+                  <td class="cell3">149/3 Arambagh,Motijheel</td>
+                  <td class="cell3">12/08/2020 03:40 PM</td>
+                  <td class="cell3">Served</td>
+                </tr>
+              <tr style="background-color:#6788db60;">
+                  <td class="cell3">101</td>
+                  <td class="cell3">Injection</td>
+                  <td class="cell3">Md.Ariful Islam</td>
+                  <td class="cell3">Dr.Mizanur Rahman</td>
+                  <td class="cell3">300 TK</td>
+                  <td class="cell3">149/3 Arambagh,Motijheel</td>
+                  <td class="cell3">12/08/2020 03:40 PM</td>
+                  <td class="cell3">Served</td>
+              </tr>
+              <tr style="background-color:#aa80c55d;">
+                <td class="cell3">101</td>
+                <td class="cell3">Injection</td>
+                <td class="cell3">Md.Ariful Islam</td>
+                <td class="cell3">Dr.Mizanur Rahman</td>
+                <td class="cell3">300 TK</td>
+                <td class="cell3">149/3 Arambagh,Motijheel</td>
+                <td class="cell3">12/08/2020 03:40 PM</td>
+                <td class="cell3">Served</td>
+              </tr>
+              <tr style="background-color:#6788db60;">
+              <td class="cell3">101</td>
+              <td class="cell3">Injection</td>
+              <td class="cell3">Md.Ariful Islam</td>
+              <td class="cell3">Dr.Mizanur Rahman</td>
+              <td class="cell3">300 TK</td>
+              <td class="cell3">149/3 Arambagh,Motijheel</td>
+              <td class="cell3">12/08/2020 03:40 PM</td>
+              <td class="cell3">Served</td>
+              </tr>
+              <tr style="background-color:#aa80c55d;">
+                  <td class="cell3">101</td>
+                  <td class="cell3">Injection</td>
+                  <td class="cell3">Md.Ariful Islam</td>
+                  <td class="cell3">Dr.Mizanur Rahman</td>
+                  <td class="cell3">300 TK</td>
+                  <td class="cell3">149/3 Arambagh,Motijheel</td>
+                  <td class="cell3">12/08/2020 03:40 PM</td>
+                  <td class="cell3">Served</td>
+                </tr>
+              <tr style="background-color:#6788db60;">
+                  <td class="cell3">101</td>
+                  <td class="cell3">Injection</td>
+                  <td class="cell3">Md.Ariful Islam</td>
+                  <td class="cell3">Dr.Mizanur Rahman</td>
+                  <td class="cell3">300 TK</td>
+                  <td class="cell3">149/3 Arambagh,Motijheel</td>
+                  <td class="cell3">12/08/2020 03:40 PM</td>
+                  <td class="cell3">Served</td>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function show_doctor_list(){
+        $("#doctor_list").css("display","block");
+    }
+    function hide_doctor_list(){
+        $("#doctor_list").css("display","none");
+    }
+    function doctor_assign(){
+        $("#doctor_list").css("display","none");
+        $("#doctor_assigned").css("display","block");
+        $("#doctor_not_assigned").css("display","none");
+    }
+    function doctor_remove(){
+        $("#doctor_assigned").css("display","none");
+        $("#doctor_not_assigned").css("display","block");
+    }
+</script>

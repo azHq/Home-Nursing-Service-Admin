@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="../css/home_style.css" rel="stylesheet" type="text/css" >
+  <link href="../css/mdb.min.css" rel="stylesheet" type="text/css" >
+  <link href="../css/fontawesome.min.css" rel="stylesheet" type="text/css" >
+  <link href="../css/all.min.css" rel="stylesheet" type="text/css" >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+  <script type="text/javascript" src="../js/myscript.js"></script> 
+  <link href="../css/animate.css" rel="stylesheet" type="text/css" >
+</head>
+<body class="w-100" style="padding-top:60px;">
+  <header>
+    <nav class="container-fluid  shadow-sm white navbar-light fixed-top d-flex" style="height:74px;">
+      <div class="w-100 my-auto">
+        <div class="row align-items-center my-auto">
+          <div class="col-9 col-sm-3 col-md-2  col-lg-2" >
+            <div class="row align-items-center" >
+              <div class="col-6">
+                <div id="ham-menu" style="background-color:white;height:38px;width:50px;margin:10px;border-radius:8px;padding:10px">
+                  <a href="#">
+                    <div style="height:100%;width:100%">
+                        <div style="height:2px;background-color:black;width:100%;margin-top:0px"></div>
+                        <div style="height:2px;background-color:black;width:100%;margin-top:6px"></div>
+                        <div style="height:2px;background-color:black;width:100%;margin-top:6px"></div>
+                    </div>    
+                  </a>
+                </div>
+              </div>
+               <div class="col-6" >
+                   <a class="navbar-brand text-dark  " href="#"><h1 ><span class="banner-text"  style="font-size:17px; color:#795548;font-family: 'Russo One',sans-serif;"></span>
+                  <img height="44" width="100" src="../assets/images/logo.svg"><spam style="font-size:16px;padding-left:5px;color:#F57C00 ;font-family: 'Russo One', sans-serif;"></spam></h1>
+                  </a>
+               </div>
+  
+            </div>  
+          </div>
+          <div class="col-1 col-sm-8 col-md-9 col-lg-9" >
+            <div class="row align-items-center" >
+              <div class="w-100 d-none d-sm-block my-auto" >
+                 <ul class="d-flex flex-row justify-content-center" style="margin-top:10px;margin-bottom:10px" >
+                   <li style="list-style:none;" ><a style="font-size:21px;color: #795548;" class="nav-link" onclick="show_all_doctors()" >All Caregivers</a></li>
+                   <li style="list-style:none;"><a style="font-size:21px;color:#33691E;" class="nav-link" onclick="show_all_users()" >Patients</a></li>
+                   <li style="list-style:none;"><a style="font-size:21px;color: #F57F17;font-weight:300;" onclick="show_all_services()" class="nav-link">Service List</a></li>
+                </ul> 
+              </div>  
+            </div>
+                
+          </div>
+          <div class="col-2 col-sm-1 col-md-1 col-lg-1 p-0" style="text-align:right;">
+            <div class="d-flex">
+              
+              <button  style="background-image:url('../assets/images/notification.png');background-size:cover;height:30px;width:30px;border-style:none;outline:none;background-color: unset;margin:auto;text-align:center;">
+                  <p style="width:14px;height:14px;margin-left:10px;margin-top:0px;background-color:red;border-radius:50%; opacity:80%;color:white; font-size:7px;text-align: center;font-weight:bolder;line-height:14px">10</p>
+              </button>
+  
+              <div onmouseover="show('dropdown-container3')"  style="height:100%;width:30px;margin-left:15px;margin:auto;">
+                <button  style="background-image:url('../assets/images/menu.png');background-size:cover;height:15px;width:15px;border-style:none;outline:none;background-color: unset;">
+                </button>
+
+              </div>
+              
+            </div>
+             <div id="dropdown-container3" onmouseleave="hide('dropdown-container3')" class="dropdown-content w-100" style="padding:0px;background-color:rgba(106,27,154 ,.8);display:none;">
+                    <a id="settings" class="p1"  style="padding:10px;color:white;text-align:center;">Settings</a>
+                    <hr style="margin:0px;background-color:white">
+                    <a onclick="logout()" class="p1"  style="padding:10px;color:white;text-align:center;" >Log out</a>
+                   <hr style="margin:0px;background-color:gray">
+            
+                </div> 
+          </div>
+        </div>
+      </div>
+       
+    </nav>
+  </header>
+
+  <div style="height:100%;width:100%;background:white;position: fixed;background-size:cover;background-repeat:no-repeat;opacity:30%"></div> 
+  <section class="row m-0">
+    <div id="sidebar" style="z-index:1;padding-top:15px" class="sidebar-show" >
+      <div style="width:100%">
+        <div id="service_request" onclick="service_request('service_request')" class="menu_item m-auto" style="width:98%;margin:2px">
+          <div style="width:100%; margin:auto;padding-top:10px">
+            <img style="width:calc(32px + 20%);margin:auto;display:block;"  src="../assets/images/patient.svg">
+          </div>
+          <h3 class="sidebar-icon">Service Requests</h3>
+          <hr class="hr">
+        </div>
+        <div id="recruitment_request" onclick="recruitment_request('recruitment_request')" class="menu_item m-auto" style="width:98%;margin:2px">
+          <div style="width:100%; margin:auto;padding-top:10px">
+            <img style="width:calc(32px + 20%);margin:auto;display:block;"  src="../assets/images/doctor.svg">
+          </div>
+          <h3 class="sidebar-icon">Recruitment Requests</h3>
+          <hr class="hr">
+        </div>
+
+      <div id="accounting" class="menu_item m-auto" onclick="accounting('accounting')" style="width:98%;margin:2px">
+          <div style="width:100%; margin:auto;padding-top:10px">
+            <img style="width:calc(32px + 20%);margin:auto;display:block;"  src="../assets/images/budget.svg">
+          </div>
+          <h3 class="sidebar-icon">Accounting</h3>
+          <hr class="hr">
+      </div>
+      <div id="notify_users" onclick="notify_users('notify_users')" class="menu_item m-auto" style="width:98%;margin:2px">
+          <div style="width:100%; margin:auto;padding-top:10px">
+            <img style="width:calc(32px + 20%);margin:auto;display:block;"  src="../assets/images/contact_us.svg">
+          </div>
+          <h3 class="sidebar-icon">Notify Users</h3>
+          <hr class="hr">
+      </div>
+      <div id="service_log" onclick="service_log('service_log')" class="menu_item m-auto" style="width:98%;margin:2px">
+        <div style="width:100%; margin:auto;padding-top:10px">
+          <img style="width:calc(32px + 20%);margin:auto;display:block;"  src="../assets/images/contact_us.svg">
+        </div>
+        <h3 class="sidebar-icon">Service Log</h3>
+        <hr class="hr">
+      </div>
+     <div id="transaction" onclick="transaction_history('transaction')" class="menu_item m-auto"  style="width:98%;margin:2px">
+          <div style="width:100%; margin:auto;padding-top:10px">
+            <img style="width:calc(32px + 20%);margin:auto;display:block;"  src="../assets/images/calculation.svg">
+          </div>
+          <h3 class="sidebar-icon">Transaction History</h3>
+          <hr class="hr">
+      </div>
+
+      <div class="menu_item m-auto" style="width:98%;margin:2px">
+          <div style="width:100%; margin:auto;padding-top:10px">
+            <img style="width:calc(32px + 20%);margin:auto;display:block;"  src="../assets/images/contact.svg">
+          </div>
+          <h3 class="sidebar-icon">About</h3>
+          <hr class="hr">
+      </div>
+
+      <div class="menu_item m-auto" style="width:98%;margin:2px">
+          <div style="width:100%; margin:auto;padding-top:10px">
+            <img style="width:calc(32px + 20%);margin:auto;display:block;"  src="../assets/images/book.svg">
+          </div>
+          <h3 class="sidebar-icon">Others</h3>
+          <hr class="hr">
+      </div>
+      <hr class="hr mb-5">
+
+   </div> 
+  </div>
+  <div id="main_container" class="main_content_style"> 
+      <div id="main_content"  style="width:100%;height:95vh;z-index:1;margin-top:20px;background-color:white;overflow-y:scroll;">
+      </div>
+  </div>
+  </section>
+  
+ 
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="http://parsleyjs.org/dist/parsley.js"></script>
+  <script type="text/javascript">
+    var pre_menu_item="recruitment_request";
+    var click_class_name="menu_item_click";
+    $(document).ready(function(){
+      isLogin();
+      var overlay=document.getElementById("sidebar");
+      var main_container=document.getElementById("main_container");
+      $( "#main_content" ).load("all_doctors_view.html", function() {
+         
+      });
+      document.getElementById("ham-menu").addEventListener("click",function(){
+          overlay.classList.toggle("sidebar-hide");
+          main_container.classList.toggle("main_content_style2");
+          
+      });
+      $("#recruitment_request").on("click",function(){
+        
+      });
+      $( "#"+pre_menu_item).addClass(click_class_name);
+    });
+    function service_request(id){
+      $( "#"+pre_menu_item).removeClass(click_class_name);
+      pre_menu_item=id;
+      $( "#"+id).addClass("menu_item_click");
+      $( "#main_content" ).load("service_request.html", function() {
+          
+        });
+    }
+    function recruitment_request(id){
+      $( "#"+pre_menu_item).removeClass(click_class_name);
+      pre_menu_item=id;
+      $( "#"+id).addClass("menu_item_click");
+      $( "#main_content" ).load("recruitment_request_view.html", function() {
+          
+        });
+    }
+    function accounting(id){
+      $( "#"+pre_menu_item).removeClass(click_class_name);
+      pre_menu_item=id;
+      $( "#"+id).addClass(click_class_name);
+      $( "#main_content" ).load("accounting.html", function() {
+          
+        });
+    }
+    function service_log(id){
+      $( "#"+pre_menu_item).removeClass(click_class_name);
+      pre_menu_item=id;
+      $( "#"+id).addClass(click_class_name);
+      $( "#main_content" ).load("service_log.html", function() {
+          
+        });
+    }
+    function notify_users(id){
+      $( "#"+pre_menu_item).removeClass(click_class_name);
+      pre_menu_item=id;
+      $( "#"+id).addClass(click_class_name);
+      $( "#main_content" ).load("notify_user.html", function() {
+          
+        });
+    }
+    function transaction_history(id){
+      $( "#"+pre_menu_item).removeClass(click_class_name);
+      pre_menu_item=id;
+      $( "#"+id).addClass(click_class_name);
+      $( "#main_content" ).load("recruitment_request_view.html", function() {
+          
+        });
+    }
+
+    function show_all_doctors(){
+      $( "#"+pre_menu_item).removeClass(click_class_name);
+      $( "#main_content" ).load("all_doctors_view.html", function() {
+         
+        });
+    }
+    function show_all_services(){
+      $( "#"+pre_menu_item).removeClass(click_class_name);
+      $( "#main_content" ).load("all_services_view.html", function() {
+         
+        });
+    }
+    function show_all_users(){
+      $( "#"+pre_menu_item).removeClass(click_class_name);
+      $( "#main_content" ).load("all_users_view.html", function() {
+         
+        });
+    }
+    function date_converter1(timestamp){
+      var date=Date.parse(timestamp.toDate());
+      return date.toString('dddd MMMM yyyy hh:mm tt');
+    }
+    
+    
+
+  </script>
+  <script type="text/javascript" src="../assets/Plugin/Datejs-master/build/date.js"></script>
+  <script src="https://code.jscharting.com/2.9.0/jscharting.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>         
+  <script defer src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+  <script type="text/javascript" src="../js/firebase_init.js"></script>
+</body>
+</html>
+
+
